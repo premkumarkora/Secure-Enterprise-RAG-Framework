@@ -25,29 +25,34 @@ This system follows a "Defense in Depth" approach to AI governance.
 }%%
 
 graph TD
-    %% Styling Definitions
-    classDef security fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef ai fill:#ccf,stroke:#333,stroke-width:2px;
-    classDef db fill:#ff9,stroke:#333,stroke-width:2px;
+    %% --- Node Styles ---
+    classDef security fill:#ff00bf,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef ai fill:#00bfff,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef db fill:#ffd700,stroke:#333,stroke-width:2px,color:#000;
+    classDef standard fill:#333,stroke:#fff,stroke-width:2px,color:#fff;
 
-    %% Nodes with Quotes to fix the error
-    User["End User (Authenticated)"] -->|Query| API["API Gateway / Orchestrator"]
+    %% --- External Nodes ---
+    User["End User (Authenticated)"]:::standard -->|Query| API["API Gateway / Orchestrator"]:::standard
     
-    subgraph "Ingestion Pipeline (Secure)"
-        Docs["Raw Documents"] -->|Extract Text| PII_Scan["PII Detector (Microsoft Presidio/BERT)"]
+    %% --- Subgraph 1: Ingestion ---
+    subgraph Ingestion ["Ingestion Pipeline (Secure)"]
+        direction TB
+        Docs["Raw Documents"]:::standard -->|Extract Text| PII_Scan["PII Detector (Microsoft Presidio/BERT)"]
         PII_Scan -->|Detected Entities| PII_Mask["Anonymization Layer"]
-        PII_Mask -->|Cleaned Text| Chunker["Semantic Chunker"]
+        PII_Mask -->|Cleaned Text| Chunker["Semantic Chunker"]:::standard
         Chunker -->|Embed| Embedding_Model["Private Embedding Model"]
         Embedding_Model -->|Vectors + ACL Metadata| VectorDB[("Vector DB with RBAC")]
     end
-
-    subgraph "Retrieval & Generation (RAG)"
+    
+    %% --- Subgraph 2: RAG Loop ---
+    subgraph RAG ["Retrieval & Generation (RAG)"]
+        direction TB
         API -->|1. Sanitize Query| Guardrail_Input["Input Guardrails"]
         Guardrail_Input -->|2. Search| VectorDB
         VectorDB -->|3. Retrieve Top-K| ReRanker["Cross-Encoder Reranker"]
-        ReRanker -->|4. Top-N Context| Context_Window["Context Window"]
+        ReRanker -->|4. Top-N Context| Context_Window["Context Window"]:::standard
         
-        Context_Window -->|5. Assemble Prompt| LLM_Gateway["LLM Gateway (LiteLLM/MLFlow)"]
+        Context_Window -->|5. Assemble Prompt| LLM_Gateway["LLM Gateway (LiteLLM/MLFlow)"]:::standard
         LLM_Gateway -->|6. Generate| LLM["Enterprise LLM (Hosting: On-Prem/Private VPC)"]
         
         LLM -->|7. Raw Response| PII_Deanonymize["De-Anonymization (Optional)"]
@@ -56,8 +61,12 @@ graph TD
 
     Audit --> API
     
-    %% Apply Styles
+    %% --- Apply Specific Node Colors ---
     class PII_Scan,PII_Mask,Guardrail_Input,Audit security;
     class LLM,Embedding_Model,ReRanker ai;
     class VectorDB db;
+    
+    %% --- FORCE DARK MODE FOR SUBGRAPHS ---
+    style Ingestion fill:#1a1a1a,stroke:#fff,stroke-width:2px,color:#fff
+    style RAG fill:#1a1a1a,stroke:#fff,stroke-width:2px,color:#fff
 ```
