@@ -10,38 +10,61 @@ Unlike standard RAG implementations, this framework prioritizes **Data Sovereign
 This system follows a "Defense in Depth" approach to AI governance.
 
 ```mermaid
-graph TD 
-    %% Styling
-    classDef security fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef ai fill:#ccf,stroke:#333,stroke-width:2px;
-    classDef db fill:#ff9,stroke:#333,stroke-width:2px;
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#BB2588',
+      'primaryTextColor': '#fff',
+      'primaryBorderColor': '#7C0000',
+      'lineColor': '#F8F9FA',
+      'secondaryColor': '#006100',
+      'tertiaryColor': '#fff'
+    }
+  }
+}%%
 
-    User["End User (Authenticated)"] -->|Query| API["API Gateway / Orchestrator"]
-    
-    subgraph "Ingestion Pipeline (Secure)"
-        Docs[Raw Documents] -->|Extract Text| PII_Scan["PII Detector (Microsoft Presidio/BERT)"]
-        PII_Scan -->|Detected Entities| PII_Mask[Anonymization Layer]
-        PII_Mask -->|Cleaned Text| Chunker[Semantic Chunker]
-        Chunker -->|Embed| Embedding_Model[Private Embedding Model]
-        Embedding_Model -->|Vectors + ACL Metadata| VectorDB[("Vector DB with RBAC")]
+graph TD
+    %% --- Styles for "Apple Liquid" Effect ---
+    classDef liquidStart fill:#000000,stroke:#333,stroke-width:4px,color:#fff,rx:20,ry:20,shadow:10px;
+    classDef liquidAgent fill:#8E2DE2,stroke:#4A00E0,stroke-width:2px,color:#fff,rx:15,ry:15,stroke-dasharray: 0;
+    classDef liquidModel fill:#F80759,stroke:#BC4E9C,stroke-width:2px,color:#fff,rx:15,ry:15;
+    classDef liquidData fill:#00F260,stroke:#0575E6,stroke-width:2px,color:#000,rx:10,ry:10;
+    classDef liquidAction fill:#fff,stroke:#333,stroke-width:1px,color:#000,rx:5,ry:5,stroke-dasharray: 5 5;
+
+    %% --- The Diagram Content ---
+    subgraph " "
+        direction TB
+        
+        Input([📄 Claims Documents]) :::liquidStart
+        
+        subgraph Orchestration [" 🧠 Multi-Agent Orchestrator "]
+            direction TB
+            Router{{" 🚦 Router Agent "}}:::liquidAgent
+            
+            subgraph Specialist_Agents [" Specialist Agents (CrewAI) "]
+                Policy[(" 📜 Policy RAG \n (Vector DB) ")]:::liquidData
+                Fraud[(" 🕵️ Fraud Detection \n (Anomaly Model) ")]:::liquidData
+                Medical[(" 🏥 Medical Encoder \n (Fine-Tuned Llama) ")]:::liquidModel
+            end
+        end
+
+        LLM[" 🔮 AWS Bedrock \n (Claude 3.5 Sonnet) "]:::liquidModel
+        Decision{{" ✅ Decision Engine "}}:::liquidAgent
+        Output([🚀 Approved/Rejected]) :::liquidStart
+
     end
 
-    subgraph "Retrieval & Generation (RAG)"
-        API -->|1. Sanitize Query| Guardrail_Input[Input Guardrails]
-        Guardrail_Input -->|2. Search| VectorDB
-        VectorDB -->|3. Retrieve Top-K| ReRanker[Cross-Encoder Reranker]
-        ReRanker -->|4. Top-N Context| Context_Window
-        
-        Context_Window -->|5. Assemble Prompt| LLM_Gateway["LLM Gateway (LiteLLM/MLFlow)"]
-        LLM_Gateway -->|6. Generate| LLM["Enterprise LLM (Hosting: On-Prem/Private VPC)"]
-        
-        LLM -->|7. Raw Response| PII_Deanonymize["De-Anonymization (Optional)"]
-        PII_Deanonymize -->|8. Audit Log| Audit[Compliance Audit Log]
-    end
-
-    Audit --> API
+    %% --- Connections ---
+    Input -->|Ingest PDF/Img| Router
+    Router -- "Context Retrieval" --> Policy
+    Router -- "Risk Analysis" --> Fraud
+    Router -- "Entity Extraction" --> Medical
     
-    class PII_Scan,PII_Mask,Guardrail_Input,Audit security;
-    class LLM,Embedding_Model,ReRanker ai;
-    class VectorDB db;
+    Policy & Fraud & Medical -.->|Aggregated Context| LLM
+    LLM ==>|Reasoning Trace| Decision
+    Decision -->|JSON Payload| Output
+
+    %% --- Link Styling ---
+    linkStyle 0,1,2,3,4,5,6,7 stroke-width:3px,fill:none,stroke:url(#gradient);
 ```
