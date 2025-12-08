@@ -10,7 +10,7 @@ Unlike standard RAG implementations, this framework prioritizes **Data Sovereign
 This system follows a "Defense in Depth" approach to AI governance.
 
 ```mermaid
-graph TD
+graph TD 
     %% Styling
     classDef security fill:#f9f,stroke:#333,stroke-width:2px;
     classDef ai fill:#ccf,stroke:#333,stroke-width:2px;
