@@ -16,14 +16,14 @@ graph TD
     classDef ai fill:#ccf,stroke:#333,stroke-width:2px;
     classDef db fill:#ff9,stroke:#333,stroke-width:2px;
 
-    User[End User (Authenticated)] -->|Query| API[API Gateway / Orchestrator]
+    User["End User (Authenticated)"] -->|Query| API["API Gateway / Orchestrator"]
     
     subgraph "Ingestion Pipeline (Secure)"
-        Docs[Raw Documents] -->|Extract Text| PII_Scan[PII Detector (Microsoft Presidio/BERT)]
+        Docs[Raw Documents] -->|Extract Text| PII_Scan["PII Detector (Microsoft Presidio/BERT)"]
         PII_Scan -->|Detected Entities| PII_Mask[Anonymization Layer]
         PII_Mask -->|Cleaned Text| Chunker[Semantic Chunker]
         Chunker -->|Embed| Embedding_Model[Private Embedding Model]
-        Embedding_Model -->|Vectors + ACL Metadata| VectorDB[(Vector DB with RBAC)]
+        Embedding_Model -->|Vectors + ACL Metadata| VectorDB[("Vector DB with RBAC")]
     end
 
     subgraph "Retrieval & Generation (RAG)"
@@ -32,10 +32,10 @@ graph TD
         VectorDB -->|3. Retrieve Top-K| ReRanker[Cross-Encoder Reranker]
         ReRanker -->|4. Top-N Context| Context_Window
         
-        Context_Window -->|5. Assemble Prompt| LLM_Gateway[LLM Gateway (LiteLLM/MLFlow)]
-        LLM_Gateway -->|6. Generate| LLM[Enterprise LLM (Hosting: On-Prem/Private VPC)]
+        Context_Window -->|5. Assemble Prompt| LLM_Gateway["LLM Gateway (LiteLLM/MLFlow)"]
+        LLM_Gateway -->|6. Generate| LLM["Enterprise LLM (Hosting: On-Prem/Private VPC)"]
         
-        LLM -->|7. Raw Response| PII_Deanonymize[De-Anonymization (Optional)]
+        LLM -->|7. Raw Response| PII_Deanonymize["De-Anonymization (Optional)"]
         PII_Deanonymize -->|8. Audit Log| Audit[Compliance Audit Log]
     end
 
