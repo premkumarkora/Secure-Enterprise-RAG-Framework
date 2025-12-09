@@ -130,7 +130,7 @@ graph LR
     %% Connect Ingestion to DB
     Embed -->|Safe Vectors| VectorDB[("🗄️ Vector DB (RBAC)")]:::db
 
-    %% 2. RAG PIPELINE (Right Side)
+    %% 2. RAG PIPELINE (Left Side)
     subgraph Retrieval ["🤖 RAG INFERENCE ZONE"]
         direction TB
         API -->|1. Sanitize| Guard["🛑 Input Guardrails"]:::security
