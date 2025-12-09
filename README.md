@@ -100,3 +100,57 @@ graph TD
     style Ingestion fill:#1a1a1a,stroke:#fff,stroke-width:2px,color:#fff
     style RAG fill:#1a1a1a,stroke:#fff,stroke-width:2px,color:#fff
 ```
+
+```mermaid
+graph LR
+    %% --- GLOBAL STYLES ---
+    %% Use GitHub's Dark Mode background color for seamless integration
+    classDef default fill:#0d1117,stroke:#30363d,stroke-width:1.5px,color:#c9d1d9;
+    
+    %% Custom "Neon" Colors for High Contrast
+    classDef security fill:#2e001f,stroke:#ff00bf,stroke-width:2px,color:#fff;
+    classDef ai fill:#001a2e,stroke:#00bfff,stroke-width:2px,color:#fff;
+    classDef db fill:#2e2800,stroke:#ffd700,stroke-width:2px,color:#fff;
+    classDef user fill:#1f6feb,stroke:#fff,stroke-width:2px,color:#fff;
+
+    %% --- MAIN FLOW ---
+    
+    %% User is the trigger
+    User["👤 End User"]:::user -->|Query| API["⚡ API Gateway"]:::default
+
+    %% 1. INGESTION PIPELINE (Left Side)
+    subgraph Ingestion ["🔒 SECURE INGESTION ZONE"]
+        direction TB
+        Docs["📄 Raw Docs"]:::default --> PII_Scan["👁️ PII Detector"]:::security
+        PII_Scan -->|Redact| PII_Mask["🛡️ Anonymizer"]:::security
+        PII_Mask --> Chunker["✂️ Chunker"]:::default
+        Chunker --> Embed["🧠 Private Embeddings"]:::ai
+    end
+
+    %% Connect Ingestion to DB
+    Embed -->|Safe Vectors| VectorDB[("🗄️ Vector DB (RBAC)")]:::db
+
+    %% 2. RAG PIPELINE (Right Side)
+    subgraph Retrieval ["🤖 RAG INFERENCE ZONE"]
+        direction TB
+        API -->|1. Sanitize| Guard["🛑 Input Guardrails"]:::security
+        Guard -->|2. Search| VectorDB
+        
+        VectorDB -->|3. Hits| ReRanker["⚖️ Cross-Encoder"]:::ai
+        ReRanker -->|4. Context| Context["📝 Context Window"]:::default
+        
+        Context -->|5. Prompt| LLM_Gate["BRIDGE (LiteLLM)"]:::default
+        LLM_Gate -->|6. Infer| LLM["🧠 Enterprise LLM"]:::ai
+        
+        LLM -->|7. Reply| Deanonymize["🔓 De-Anonymizer"]:::security
+        Deanonymize -->|8. Log| Audit["📜 Audit Log"]:::security
+    end
+
+    %% Close the loop
+    Audit -.->|Response| API
+
+    %% --- SUBGRAPH STYLING (The Dark Mode Fix) ---
+    %% This sets the container boxes to be dark/transparent so they don't look like white blocks
+    style Ingestion fill:#161b22,stroke:#30363d,stroke-width:2px,stroke-dasharray: 5 5,color:#fff
+    style Retrieval fill:#161b22,stroke:#30363d,stroke-width:2px,stroke-dasharray: 5 5,color:#fff
+```
