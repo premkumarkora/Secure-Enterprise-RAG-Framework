@@ -1,15 +1,15 @@
-## The CISO’s Nightmare & The Zero-Trust RAG"
+# Secure Enterprise RAG Framework (Privacy-First Architecture)
 
-1. (The Business Problem)
+### 1. The Business Problem
 
 In my previous role, we faced a classic 'Enterprise AI Paradox.' We had terabytes of rich, unstructured data—medical claims, insurance policies, and customer histories. The business wanted to unleash an LLM on this data to automate approvals and reduce that 5-day cycle time to minutes.
 But here was the roadblock: We couldn't just dump this data into a vector database or an LLM. It was full of PII (names, Emirates IDs equivalent, medical conditions). If a junior analyst asked, 'Show me high-value claims,' the AI might hallucinate or reveal a CEO’s private medical data. Our CISO was never going to sign off on a 'Black Box' that leaks privacy."
 
-2. Architecture
+### 2. Architecture
 
 I realized that standard RAG (Retrieval-Augmented Generation) wasn't enough. We needed a 'Zero-Trust' RAG architecture. I had to design a system where the AI is smart enough to answer questions but blind to the specific data it shouldn't see.
 
-3. The Technical Implementation
+### 3. The Technical Implementation
 
 The Airlock (PII Redaction): "First, I built an ingestion 'airlock.' Before any document touched our Vector Database, it went through a PII sanitization layer (using tools like Microsoft Presidio or custom BERT models). We replaced 'John Doe' with <PERSON_1> and 'Diabetes' with <CONDITION_A>. The AI learns the patterns of the claim without ever seeing the identity."
 
@@ -18,17 +18,13 @@ The bouncer (Row-Level Security): "Next, I solved the access problem. I didn't j
 The Orchestrator (Multi-Agent Setup): "Finally, I used a Multi-Agent setup. One agent retrieves the data, a second agent 'audits' the answer for leakage, and a third agent formats it. This 'Council of Agents' ensures no single prompt injection can trick the system."
 
 
-4. The Result
+### 4. The Result
 
 The result was a robust, privacy-first engine. We moved from a complete standstill on AI adoption to automating 80% of claims. We achieved the speed of GenAI with the security rigor of a bank vault. We proved that you don't have to choose between innovation and compliance—you just need the right architecture.
 
 
-
-
-
 ---
 
-# Secure Enterprise RAG Framework (Privacy-First Architecture)
 
 ## Overview
 A reference architecture for a **Zero-Trust Retrieval-Augmented Generation (RAG)** system designed for highly regulated industries (Healthcare, Banking, Government). 
