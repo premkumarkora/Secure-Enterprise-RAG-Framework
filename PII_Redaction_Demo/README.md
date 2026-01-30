@@ -29,13 +29,13 @@ A production-ready Python script that takes real-looking medical claims (or any 
 
 ```
 Claim ID: CLM-2024-8472
-Patient: Ahmed Al-John, Emirates ID: 784-1985-1234567-8
+Patient: Ahmed Hamid, Emirates ID: 784-1985-1234567-8
 DOB: 15/03/1985
 Diagnosis: Type 2 Diabetes with complications
 Physician: Dr. Sarah Johnson
 Hospital: Burjeel Medical City, Abu Dhabi
 Phone: +971-50-123-4567
-Email: ahmed.almansouri@email.ae
+Email: ahmed.Hamid@email.ae
 Claim Amount: AED 45,000
 Notes: Patient hospitalized on 12/01/2024 for insulin management.
 Credit Card: 4532-1234-5678-9010
