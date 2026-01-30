@@ -78,6 +78,81 @@ flowchart TB
     style Output fill:#e0f2f1
 ```
 
+```
+Claim ID: CLM-2024-8472
+Patient: Ahmed Hamid, Emirates ID: 784-1985-1234567-8
+DOB: 15/03/1985
+Diagnosis: Type 2 Diabetes with complications
+Physician: Dr. Sarah Johnson
+Hospital: Burjeel Medical City, Abu Dhabi
+Phone: +971-50-123-4567
+Email: ahmed.Hamid@email.ae
+Claim Amount: AED 45,000
+Notes: Patient hospitalized on 12/01/2024 for insulin management.
+Credit Card: 4532-1234-5678-9010
+```
+
+| Entity Type | Original | Redacted |
+|---|---|---|
+| Patient Name | Ahmed Hamid | `<PERSON_1>` |
+| Emirates ID | 784-1985-1234567-8 | `<UAE_ID_1>` |
+| Date of Birth | 15/03/1985 | `<DATE_1>` |
+| Physician | Dr. Sarah Johnson | `<PERSON_2>` |
+| Hospital | Burjeel Medical City, Abu Dhabi | `<LOCATION_1>`, `<LOCATION_2>` |
+| Phone | +971-50-123-4567 | `<PHONE_NUMBER_1>` |
+| Email | ahmed.Hamid@email.ae | `<EMAIL_1>` |
+| Claim Amount | AED 45,000 | `<CURRENCY_1>` |
+| Hospitalization Date | 12/01/2024 | `<DATE_2>` |
+| Credit Card | 4532-1234-5678-9010 | `<CREDIT_CARD_1>` |
+
+**Key Insight**: The AI system can learn that "patients hospitalized for insulin management have certain claim patterns" without ever knowing the patient is Ahmed Al-Mansouri or his Emirates ID.
+
+---
+
+## Technical Architecture
+
+### 1. Detection Engine (Microsoft Presidio)
+
+**Purpose**: Scan text for 50+ PII types
+
+**Capabilities**:
+- **Personal Information**: Names, nicknames, titles
+- **Government IDs**: Passport, Emirates ID, Social Security, Driver License
+- **Financial**: Credit cards, bank accounts, SWIFT codes, IBAN
+- **Contact**: Email addresses, phone numbers, URLs
+- **Location**: Cities, addresses, coordinates
+- **Temporal**: Dates, birth dates, age
+- **Medical**: Diagnoses, medical conditions, medication names (context-aware)
+- **Custom Patterns**: Domain-specific entities using regex + NLP
+
+**Technology Stack**:
+```
+Microsoft Presidio (Detection)
+  ├── spaCy (NLP Model) - Named Entity Recognition
+  ├── Rule-Based Patterns - Regex for credit cards, phone numbers
+  ├── Recognizer Framework - Pluggable architecture
+  └── Confidence Scoring - Probability of each detection
+```
+
+**Workflow**:
+```
+Input Text
+    ↓
+Text Analysis (spaCy NLP)
+    ↓
+Entity Recognition
+    ├── Named Entities (PERSON, GPE, DATE, etc.)
+    ├── Pattern Matching (Regex for IDs, Cards)
+    └── Custom Recognizers
+    ↓
+Confidence Scoring
+    ├── High Confidence (>0.9): Definitely PII
+    ├── Medium Confidence (0.5-0.9): Likely PII
+    └── Low Confidence (<0.5): Maybe PII
+    ↓
+Output: List of Detected Entities
+```
+
 ---
 
 ## Data Flow
