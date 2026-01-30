@@ -61,13 +61,13 @@ Credit Card: <CREDIT_CARD_1>
 
 | Entity Type | Original | Redacted |
 |---|---|---|
-| Patient Name | Ahmed Al-Mansouri | `<PERSON_1>` |
+| Patient Name | Ahmed Hamid | `<PERSON_1>` |
 | Emirates ID | 784-1985-1234567-8 | `<UAE_ID_1>` |
 | Date of Birth | 15/03/1985 | `<DATE_1>` |
 | Physician | Dr. Sarah Johnson | `<PERSON_2>` |
 | Hospital | Burjeel Medical City, Abu Dhabi | `<LOCATION_1>`, `<LOCATION_2>` |
 | Phone | +971-50-123-4567 | `<PHONE_NUMBER_1>` |
-| Email | ahmed.almansouri@email.ae | `<EMAIL_1>` |
+| Email | ahmed.Hamid@email.ae | `<EMAIL_1>` |
 | Claim Amount | AED 45,000 | `<CURRENCY_1>` |
 | Hospitalization Date | 12/01/2024 | `<DATE_2>` |
 | Credit Card | 4532-1234-5678-9010 | `<CREDIT_CARD_1>` |
