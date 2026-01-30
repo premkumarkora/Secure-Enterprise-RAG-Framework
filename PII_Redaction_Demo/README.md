@@ -94,16 +94,16 @@ Credit Card: 4532-1234-5678-9010
 
 | Entity Type | Original | Redacted |
 |---|---|---|
-| Patient Name | Ahmed Hamid | `<PERSON_1>` |
+| Patient Name | Ahmed Bai | `<PERSON_1>` |
 | Emirates ID | 784-1985-1234567-8 | `<UAE_ID_1>` |
 | Date of Birth | 15/03/1985 | `<DATE_1>` |
-| Physician | Dr. Sarah Johnson | `<PERSON_2>` |
-| Hospital | Burjeel Medical City, Abu Dhabi | `<LOCATION_1>`, `<LOCATION_2>` |
+| Physician | Dr. Sarah Khan | `<PERSON_2>` |
+| Hospital | NoName Medical City, Abu Dhabi | `<LOCATION_1>`, `<LOCATION_2>` |
 | Phone | +971-50-123-4567 | `<PHONE_NUMBER_1>` |
-| Email | ahmed.Hamid@email.ae | `<EMAIL_1>` |
+| Email | ahmed.Bai@email.ae | `<EMAIL_1>` |
 | Claim Amount | AED 45,000 | `<CURRENCY_1>` |
 | Hospitalization Date | 12/01/2024 | `<DATE_2>` |
-| Credit Card | 4532-1234-5678-9010 | `<CREDIT_CARD_1>` |
+| Credit Card | 0909-1234-5678-9010 | `<CREDIT_CARD_1>` |
 
 **Key Insight**: The AI system can learn that "patients hospitalized for insulin management have certain claim patterns" without ever knowing the patient is Ahmed Al-Mansouri or his Emirates ID.
 
@@ -325,23 +325,23 @@ PII_Redaction_Demo/
 ### Input (Raw Claim)
 ```
 Claim ID: CLM-2024-7621
-Patient: Rajesh Kumar Singh, Passport: L8765432
+Patient: Rajesh Dalal Singh, Passport: L8765432
 DOB: 10/05/1978
-Physician: Dr. Emily Chen
-Hospital: Mediclinic City Hospital, Dubai
-Phone: +971-55-234-8765
-Email: rajesh.singh@company.ae
+Physician: Dr. Emily Khan
+Hospital: NoName City Hospital, Dubai
+Phone: +971-00-234-8765
+Email: rajesh.Dalal@example.ae
 ```
 
 ### Detected Entities Table
 
 | Original Value | Entity Type | Replaced With |
 |----------------|-------------|---------------|
-| rajesh.singh@company.ae | EMAIL_ADDRESS | [EMAIL_ADDRESS] |
-| Rajesh Kumar Singh | PERSON | [PERSON_NAME] |
-| Emily Chen | PERSON | [PERSON_NAME] |
-| Mediclinic City Hospital, Dubai | LOCATION | [LOCATION_NAME] |
-| +971-55-234-8765 | PHONE_NUMBER | [PHONE_NUMBER] |
+| rajesh.Dalal@example.ae | EMAIL_ADDRESS | [EMAIL_ADDRESS] |
+| Rajesh Dalal Singh | PERSON | [PERSON_NAME] |
+| Emily Khan | PERSON | [PERSON_NAME] |
+| NoName City Hospital, Dubai | LOCATION | [LOCATION_NAME] |
+| +971-00-234-8765 | PHONE_NUMBER | [PHONE_NUMBER] |
 | 10/05/1978 | DATE_TIME | [DATE_TIME] |
 
 ---
