@@ -29,7 +29,7 @@ A production-ready Python script that takes real-looking medical claims (or any 
 
 ```
 Claim ID: CLM-2024-8472
-Patient: Ahmed Al-Mansouri, Emirates ID: 784-1985-1234567-8
+Patient: Ahmed Al-John, Emirates ID: 784-1985-1234567-8
 DOB: 15/03/1985
 Diagnosis: Type 2 Diabetes with complications
 Physician: Dr. Sarah Johnson
