@@ -85,7 +85,7 @@ DOB: 15/03/1985
 Diagnosis: Type 2 Diabetes with complications
 Physician: Dr. Sarah Johnson
 Hospital: Burjeel Medical City, Abu Dhabi
-Phone: +971-50-123-4567
+Phone: +971-00-123-4567
 Email: ahmed.Hamid@email.ae
 Claim Amount: AED 45,000
 Notes: Patient hospitalized on 12/01/2024 for insulin management.
