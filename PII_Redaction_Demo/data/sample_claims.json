@@ -1,0 +1,42 @@
+[
+  {
+    "claim_id": "CLM-2024-8472",
+    "text": "Claim ID: CLM-2024-8472\nPatient: Ahmed Khalil Hassan, Emirates ID: 784-1985-1234567-8\nDOB: 15/03/1985\nDiagnosis: Type 2 Diabetes with complications\nPhysician: Dr. Sarah Mitchell\nHospital: Burjeel Medical City, Abu Dhabi\nPhone: +971-50-123-4567\nEmail: ahmed.hassan@email.ae\nClaim Amount: AED 45,000\nNotes: Patient hospitalized on 12/01/2024 for insulin management. Follow-up required with endocrinologist.\nCredit Card: 4532-1234-5678-9010"
+  },
+  {
+    "claim_id": "CLM-2024-9183",
+    "text": "Claim ID: CLM-2024-9183\nPatient: Fatima Youssef Ibrahim, Emirates ID: 784-1992-7654321-5\nDOB: 22/08/1992\nDiagnosis: Acute appendicitis - emergency surgery\nPhysician: Dr. Karim Saleh\nHospital: Cleveland Clinic Abu Dhabi\nPhone: +971-52-987-6543\nEmail: fatima.ibrahim@email.com\nClaim Amount: AED 78,500\nNotes: Emergency admission on 18/01/2024. Laparoscopic appendectomy performed successfully. Patient discharged on 20/01/2024.\nInsurance Policy: POL-UAE-2024-45678"
+  },
+  {
+    "claim_id": "CLM-2024-7621",
+    "text": "Claim ID: CLM-2024-7621\nPatient: Vikram Kumar Sharma, Passport: L8765432, Indian National\nDOB: 10/05/1978\nDiagnosis: Coronary artery disease - angioplasty procedure\nPhysician: Dr. Lisa Wong\nHospital: Mediclinic City Hospital, Dubai\nPhone: +971-55-234-8765\nEmail: vikram.sharma@company.ae\nClaim Amount: AED 125,000\nNotes: Procedure performed on 05/01/2024. Two stents placed. Patient stable and recovering well. Cardiac rehabilitation recommended.\nCredit Card: 5412-7534-8765-4321"
+  },
+  {
+    "claim_id": "CLM-2024-8834",
+    "text": "Claim ID: CLM-2024-8834\nPatient: Isabella Garcia Santos, Emirates ID: 784-1988-9876543-2\nDOB: 03/12/1988\nDiagnosis: Maternity - Normal delivery\nPhysician: Dr. Nadia Jameel\nHospital: Healthpoint Hospital, Abu Dhabi\nPhone: +971-50-876-5432\nEmail: isabella.santos@outlook.com\nClaim Amount: AED 32,000\nNotes: Patient admitted on 14/01/2024. Normal vaginal delivery of healthy baby girl (3.2 kg) on 15/01/2024. Both mother and baby discharged on 17/01/2024 in good health.\nEmergency Contact: Miguel Santos +971-50-876-5433"
+  },
+  {
+    "claim_id": "CLM-2024-9456",
+    "text": "Claim ID: CLM-2024-9456\nPatient: James Patrick Murphy, Emirates ID: 784-1995-3456789-1\nDOB: 28/07/1995\nDiagnosis: Sports injury - ACL reconstruction\nPhysician: Dr. Tariq Mahmood\nHospital: NMC Royal Hospital, Dubai\nPhone: +971-54-321-7654\nEmail: james.murphy@sports.ae\nClaim Amount: AED 95,000\nNotes: MRI confirmed complete ACL tear on 08/01/2024. Arthroscopic reconstruction performed on 10/01/2024. Physical therapy protocol initiated. Expected recovery 6-9 months.\nInsurance Policy: POL-UAE-2024-98765\nCredit Card: 6011-2345-6789-0123"
+  },
+  {
+    "claim_id": "CLM-2024-7892",
+    "text": "Claim ID: CLM-2024-7892\nPatient: Maryam Khalid Osman, Emirates ID: 784-1980-1122334-4\nDOB: 19/11/1980\nDiagnosis: Breast cancer - chemotherapy treatment (cycle 3 of 6)\nPhysician: Dr. Rachel Thompson\nHospital: American Hospital Dubai\nPhone: +971-50-445-6677\nEmail: maryam.osman@corporate.ae\nClaim Amount: AED 68,000\nNotes: Patient undergoing adjuvant chemotherapy following lumpectomy in December 2023. Cycle 3 administered on 22/01/2024. Tolerating treatment well with manageable side effects. Oncology follow-up scheduled.\nEmergency Contact: Khalid Osman +971-50-445-6678"
+  },
+  {
+    "claim_id": "CLM-2024-8123",
+    "text": "Claim ID: CLM-2024-8123\nPatient: William Robert Clarke, Passport: M9876543, British National\nDOB: 14/02/1972\nDiagnosis: Kidney stones - lithotripsy procedure\nPhysician: Dr. Yusuf Nasser\nHospital: Zulekha Hospital, Sharjah\nPhone: +971-55-789-3456\nEmail: william.clarke@finance.ae\nClaim Amount: AED 42,500\nNotes: Patient presented with severe right flank pain on 19/01/2024. CT scan confirmed 8mm kidney stone. Extracorporeal shock wave lithotripsy performed on 21/01/2024. Stone fragmentation successful. Follow-up imaging in 2 weeks.\nCredit Card: 3782-822463-10005"
+  },
+  {
+    "claim_id": "CLM-2024-9567",
+    "text": "Claim ID: CLM-2024-9567\nPatient: Ananya Reddy Menon, Emirates ID: 784-1990-5544332-7\nDOB: 06/09/1990\nDiagnosis: Gastroenteritis - IV hydration and treatment\nPhysician: Dr. Samir Rizvi\nHospital: Mediclinic Parkview Hospital, Dubai\nPhone: +971-52-234-5678\nEmail: ananya.menon@tech.ae\nClaim Amount: AED 8,500\nNotes: Patient admitted via ER on 23/01/2024 with severe dehydration. IV fluids administered. Symptoms resolved within 24 hours. Discharged on 24/01/2024 with oral rehydration instructions and dietary advice.\nInsurance Policy: POL-UAE-2024-11223"
+  },
+  {
+    "claim_id": "CLM-2024-8901",
+    "text": "Claim ID: CLM-2024-8901\nPatient: Omar Rashid Zayed, Emirates ID: 784-1975-9988776-3\nDOB: 25/04/1975\nDiagnosis: Hypertension management and cardiac evaluation\nPhysician: Dr. Catherine Miller\nHospital: Sheikh Khalifa Medical City, Abu Dhabi\nPhone: +971-50-123-9988\nEmail: omar.zayed@energy.ae\nClaim Amount: AED 18,000\nNotes: Comprehensive cardiac workup including ECG, echocardiogram, and stress test performed on 16/01/2024. Hypertension medication adjusted. Patient counseled on lifestyle modifications. Regular monitoring required.\nEmergency Contact: Noura Zayed +971-50-123-9989\nCredit Card: 5105-1051-0510-5100"
+  },
+  {
+    "claim_id": "CLM-2024-9012",
+    "text": "Claim ID: CLM-2024-9012\nPatient: Charlotte Marie Laurent, Emirates ID: 784-1987-6677889-9\nDOB: 12/06/1987\nDiagnosis: Dermatology consultation - severe eczema treatment\nPhysician: Dr. Hana Kareem\nHospital: Derma Clinic, Jumeirah, Dubai\nPhone: +971-54-567-8901\nEmail: charlotte.laurent@consulting.ae\nClaim Amount: AED 12,000\nNotes: Patient referred for specialized treatment of chronic eczema unresponsive to standard therapy. Patch testing completed on 20/01/2024. Prescribed biologic therapy. Follow-up in 4 weeks to assess response.\nInsurance Policy: POL-UAE-2024-66778"
+  }
+]

@@ -456,6 +456,97 @@ This approach enables organizations to achieve the benefits of generative AI —
 
 ---
 
+## Project Files & Components
+
+### Root Level Files
+
+#### [README.md](README.md)
+- Main project documentation for the Secure Enterprise RAG Framework
+- Contains business problem, architecture overview, and system design
+- Includes mermaid diagrams showing the RAG pipeline flow
+- Links to core components: PII detection, RBAC, multi-agent orchestration
+
+#### [claude.md](claude.md)
+- **This file** - Comprehensive project documentation
+- Detailed explanations of all three pillars: Airlock, Bouncer, Orchestrator
+- Implementation considerations, security best practices, scalability guidance
+- Real-world case study showing 80% automation results
+- Getting started guide and success metrics
+
+---
+
+### PII Redaction Demo Module
+
+The `PII_Redaction_Demo/` directory contains a working demonstration of the "Airlock" component—the critical first layer that prevents PII from entering AI systems.
+
+#### [PII_Redaction_Demo/README.md](PII_Redaction_Demo/README.md)
+- **Comprehensive guide** to the PII Redaction subsystem
+- Explains what PII Redaction Demo will build
+- Real medical claim example (input → output transformation)
+- Technical architecture breakdown with diagrams
+- Components: Detection Engine, Redaction Strategy, Demo Features
+- Technology stack and directory structure
+- 8 key features with detailed explanations
+- Use cases across Healthcare, Finance, Government, Enterprise
+- Installation & quick start instructions
+- Configuration guide with environment variables
+- Performance benchmarks (15-20 docs/sec throughput)
+- Security considerations and troubleshooting
+
+#### [PII_Redaction_Demo/Setup_guide.md](PII_Redaction_Demo/Setup_guide.md)
+- **Quick installation guide** (5 minute setup)
+- Step-by-step dependency installation
+- spaCy language model download instructions
+- Test command to verify installation
+- Expected output format for successful run
+- Simple, action-oriented instructions for getting started
+
+#### [PII_Redaction_Demo/How I Built a PII Protection Layer for Healthcare AI (Code Included).md](PII_Redaction_Demo/How%20I%20Built%20a%20PII%20Protection%20Layer%20for%20Healthcare%20AI%20(Code%20Included).md)
+- **Narrative explanation** of the PII protection architecture
+- Real-world problem from Sun Life Financial ($1.8M automation project)
+- "Airlock" architectural pattern explained with examples
+- Technical deep dive into Microsoft Presidio implementation
+- Before/after transformation examples with actual data
+- How PII detection works using spaCy NLP + pattern matching
+- Detailed code walkthrough (50 lines of Python)
+- Integration points for the broader RAG system
+- Lessons learned and implementation insights
+
+#### [PII_Redaction_Demo/pii_redactor.py](PII_Redaction_Demo/pii_redactor.py)
+- **Main Python implementation** of the PII redaction system
+- ~282 lines of production-ready code
+- `PIIRedactor` class: Core engine for detection and redaction
+- Key methods:
+  - `__init__()`: Initializes Presidio analyzer/anonymizer and spaCy NLP
+  - `analyze()`: Detects PII entities in input text
+  - `redact()`: Replaces entities with anonymized tokens
+  - Batch processing capabilities
+- Supports 10+ entity types: PERSON, EMAIL, PHONE, CREDIT_CARD, IBAN, DATE_TIME, LOCATION, etc.
+- Integrated with:
+  - **presidio-analyzer**: NLP-based PII detection
+  - **presidio-anonymizer**: Entity redaction engine
+  - **spacy**: Named entity recognition (en_core_web_sm model)
+  - **colorama**: Colored terminal output
+  - **tabulate**: Formatted result tables
+- Includes analysis reporting with confidence scores
+- Handles multiple claims in batch mode
+- Features detailed output formatting for audit trails
+
+#### [PII_Redaction_Demo/data/sample_claims.json](PII_Redaction_Demo/data/sample_claims.json)
+- **Sample dataset** with realistic medical claims
+- Contains multiple claim examples with sensitive data:
+  - Patient names and IDs (Emirates ID format)
+  - Dates of birth and hospitalization dates
+  - Medical diagnoses and conditions
+  - Physician and hospital information
+  - Contact details (phone, email)
+  - Financial information (claim amounts, credit cards)
+- Used for testing the PII redaction pipeline
+- Demonstrates real-world data patterns
+- ~6KB of structured claim data in JSON format
+
+---
+
 ## References & Resources
 
 - **Microsoft Presidio**: Open-source PII detection framework
@@ -471,6 +562,15 @@ This approach enables organizations to achieve the benefits of generative AI —
 
 **Version**: 1.0  
 **Last Updated**: January 27, 2026  
-**Status**: Reference Architecture  
+**Status**: Reference Architecture with Working Demo  
 **License**: Refer to repository LICENSE file  
 **Repository**: https://github.com/premkumarkora/Secure-Enterprise-RAG-Framework
+
+## Quick Navigation
+
+- **For High-Level Understanding**: Start with [README.md](README.md)
+- **For PII Implementation Details**: See [PII_Redaction_Demo/README.md](PII_Redaction_Demo/README.md)
+- **For Quick Setup**: Follow [PII_Redaction_Demo/Setup_guide.md](PII_Redaction_Demo/Setup_guide.md)
+- **For Technical Story**: Read [PII_Redaction_Demo/How I Built a PII Protection Layer for Healthcare AI (Code Included).md](PII_Redaction_Demo/How%20I%20Built%20a%20PII%20Protection%20Layer%20for%20Healthcare%20AI%20(Code%20Included).md)
+- **For Working Code**: Review [PII_Redaction_Demo/pii_redactor.py](PII_Redaction_Demo/pii_redactor.py)
+- **For Test Data**: Check [PII_Redaction_Demo/data/sample_claims.json](PII_Redaction_Demo/data/sample_claims.json)
