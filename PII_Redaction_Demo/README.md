@@ -80,16 +80,16 @@ flowchart TB
 
 ```
 Claim ID: CLM-2024-8472
-Patient: Ahmed Hamid, Emirates ID: 784-1985-1234567-8
+Patient: Ahmed Bai, Emirates ID: 784-1985-1234567-8
 DOB: 15/03/1985
 Diagnosis: Type 2 Diabetes with complications
-Physician: Dr. Sarah Johnson
+Physician: Dr. Sarah Khan
 Hospital: Burjeel Medical City, Abu Dhabi
 Phone: +971-00-123-4567
-Email: ahmed.Hamid@email.ae
+Email: ahmed.Bai@email.ae
 Claim Amount: AED 45,000
 Notes: Patient hospitalized on 12/01/2024 for insulin management.
-Credit Card: 4532-1234-5678-9010
+Credit Card: 0909-1234-5678-9010
 ```
 
 | Entity Type | Original | Redacted |
